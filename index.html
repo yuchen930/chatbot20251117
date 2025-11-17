@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- API Key Settings -->
+    <div id="api-key-container">
+        <div class="api-key-box">
+            <h2>設定您的 Gemini API 金鑰</h2>
+            <p>請輸入您的 API 金鑰以開始使用。您的金鑰將會安全地儲存在您的瀏覽器中。</p>
+            <input type="password" id="api-key-input" placeholder="請在此輸入您的 Gemini API 金鑰">
+            <button id="save-api-key-btn">儲存</button>
+        </div>
+    </div>
+
+    <!-- Main Chat Interface -->
+    <div id="chat-container" class="hidden">
+        <div id="overlay" class="hidden"></div>
+        <!-- Sidebar for Chat History -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <h2>對話紀錄</h2>
+                <button id="new-chat-btn">+</button>
+            </div>
+            <div id="history-list">
+                <!-- Chat history items will be populated here -->
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main id="main-chat">
+            <!-- Mask (Personality) Selector -->
+            <header id="chat-header">
+                <button id="menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="mask-selector">
+                    <label for="mask-select">AI 面具:</label>
+                    <select id="mask-select">
+                        <option value="default">預設</option>
+                        <!-- Custom masks will be populated here -->
+                    </select>
+                    <button id="add-mask-btn">新增面具</button>
+                </div>
+            </header>
+
+            <!-- Chat Messages -->
+            <div id="chat-messages">
+                <!-- Messages will appear here -->
+            </div>
+
+            <!-- Suggested Questions -->
+            <div id="suggested-questions">
+                <!-- Suggested question buttons will appear here -->
+            </div>
+
+            <!-- Message Input -->
+            <footer id="chat-footer">
+                <input type="text" id="message-input" placeholder="在這裡輸入訊息...">
+                <button id="send-btn">傳送</button>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal for adding new masks -->
+    <div id="add-mask-modal" class="hidden">
+        <div class="modal-content">
+            <h2>新增 AI 面具</h2>
+            <label for="mask-name-input">面具名稱:</label>
+            <input type="text" id="mask-name-input" placeholder="例如：翻譯專家">
+            <label for="mask-prompt-input">系統提示 (System Prompt):</label>
+            <textarea id="mask-prompt-input" placeholder="設定 AI 的行為，例如：你是一個專業的英文翻譯，只回答與翻譯相關的問題。"></textarea>
+            <div class="modal-actions">
+                <button id="save-mask-btn">儲存</button>
+                <button id="cancel-mask-btn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai/dist/index.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
