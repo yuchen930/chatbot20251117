@@ -7,6 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="app-container" class="hidden">
+        <div id="sidebar">
+            <div id="sidebar-header">
+                <h2>對話紀錄</h2>
+                <button id="new-chat-btn">+</button>
+            </div>
+            <div id="history-list"></div>
+        </div>
+        <div id="chat-container">
+            <div id="chat-header">
+                <select id="mask-select"></select>
+                <button id="manage-masks-btn">管理面具</button>
+            </div>
+            <div id="chat-history"></div>
+            <div id="suggestions-container"></div>
+            <div id="input-container">
+                <textarea id="message-input" placeholder="在這裡輸入您的訊息..."></textarea>
+                <button id="send-btn">傳送</button>
+            </div>
+        </div>
+    </div>
+
     <div id="api-key-container">
         <h1>Gemini API 金鑰設定</h1>
         <p>請輸入您的 Gemini API 金鑰：</p>
@@ -15,11 +37,27 @@
         <p id="api-key-error" class="error-message"></p>
     </div>
 
-    <div id="chat-container" class="hidden">
-        <div id="chat-history"></div>
-        <div id="input-container">
-            <textarea id="message-input" placeholder="在這裡輸入您的訊息..."></textarea>
-            <button id="send-btn">傳送</button>
+    <div id="mask-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>管理面具</h2>
+            <div id="modal-body">
+                <div id="mask-list-container">
+                    <!-- Masks will be dynamically inserted here -->
+                </div>
+                <div id="mask-edit-container">
+                    <input type="hidden" id="mask-id-input">
+                    <label for="mask-name-input">面具名稱:</label>
+                    <input type="text" id="mask-name-input" placeholder="例如：程式碼專家">
+                    <label for="mask-prompt-input">系統提示 (Prompt):</label>
+                    <textarea id="mask-prompt-input" rows="6" placeholder="例如：你是一個專業的軟體工程師..."></textarea>
+                    <div id="mask-edit-buttons">
+                        <button id="save-mask-btn">儲存</button>
+                        <button id="delete-mask-btn" class="danger">刪除</button>
+                        <button id="new-mask-btn" type="button">新增面具</button>
+                    </div>
+                </div>
+            </div>
+            <button id="close-modal-btn" class="close-btn">&times;</button>
         </div>
     </div>
 
